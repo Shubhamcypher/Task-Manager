@@ -1,7 +1,13 @@
 const express = require("express");
 const app = express();
 const cors = require("cors")
-app.use(cors())
+app.use(cors(
+    {
+        origin:['https://task-manager-psi-sage.vercel.app/'],
+        methods:['GET','PUT','PATCH','DELETE'],
+        credentials:true
+    }
+))
 
 const userAPI = require("./routes/user.route.js")
 const taskAPI = require("./routes/task.route.js")
