@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors")
 app.use(cors(
     {
-        origin:['https://task-manager-psi-sage.vercel.app/'],
+        origin:['https://task-manager-psi-sage.vercel.app/','https://task-manager-frontend-azure.vercel.app/'],
         methods:['GET','PUT','PATCH','DELETE','POST'],
         credentials:true
     }
