@@ -4,7 +4,7 @@ const cors = require("cors")
 app.use(cors(
     {
         origin:['https://task-manager-psi-sage.vercel.app/'],
-        methods:['GET','PUT','PATCH','DELETE'],
+        methods:['GET','PUT','PATCH','DELETE','POST'],
         credentials:true
     }
 ))
