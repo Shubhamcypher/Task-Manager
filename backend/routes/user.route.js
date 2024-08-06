@@ -51,7 +51,7 @@ router.post("/log-in", async (req, res) => {
     // Check if user exists
     const existingUser = await User.findOne({ username });
     if (!existingUser) {
-      return res.status(400).json({ message: "Invalid credentials bro change something",username,password });
+      return res.status(400).json({ message: "Invalid credentials bro change something" });
     }
 
     // Compare password
