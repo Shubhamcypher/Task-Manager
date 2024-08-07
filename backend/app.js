@@ -1,13 +1,22 @@
 const express = require("express");
 const app = express();
 const cors = require("cors")
-app.use(cors(
-    {
-        origin:['https://task-manager-psi-sage.vercel.app','https://task-manager-frontend-azure.vercel.app','http://localhost:3000','http://localhost:8000'],
-        methods:['GET','PUT','PATCH','DELETE','POST'],
-        credentials:true
-    }
-))
+const allowedOrigins = [
+    'https://task-manager-frontend-azure.vercel.app',
+    'http://localhost:3000'
+];
+
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    credentials: true
+}));
 
 const userAPI = require("./routes/user.route.js")
 const taskAPI = require("./routes/task.route.js")
